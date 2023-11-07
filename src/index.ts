@@ -1,5 +1,6 @@
 import {expressApp, httpServer} from './server';
 import './handlers/api.handler';
+import './handlers/socket.handler';
 
 const socketIoPort = 9090;
 const expressPort = 9091;
