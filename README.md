@@ -1,6 +1,6 @@
 # Glow 2023 Submarine Hub
 
-![Glowing Submarine](https://www.example.com/glowing-submarine.jpg)
+<img src="https://i.imgur.com/G3js2oS.png" alt="Glowing Submarine" style="width: 500px;">
 
 Welcome to the most innovative, out-of-this-world, and slightly nonsensical project - the **Glow 2023 Submarine Hub**. This project combines the elegance of a submarine with the luminance of a glow stick. Why? Well, why not?
 
