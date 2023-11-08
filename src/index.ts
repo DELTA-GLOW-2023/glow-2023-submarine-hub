@@ -2,8 +2,8 @@ import {expressApp, httpServer} from './server';
 import './handlers/api.handler';
 import './handlers/socket.handler';
 
-const socketIoPort = 9090;
-const expressPort = 9091;
+const socketIoPort = 3000;
+const expressPort = 3001;
 
 httpServer.listen(socketIoPort, () => {
   console.log(`Server listening on port ${socketIoPort}`);
