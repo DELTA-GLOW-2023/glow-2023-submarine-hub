@@ -3,7 +3,7 @@ import {Server as SocketIOServer} from 'socket.io';
 import * as express from 'express';
 import * as cors from 'cors';
 
-const PORT = process.env.PORT || 9000;
+const PORT = Number(process.env.PORT ?? 8080);
 
 const app = express();
 const httpServer = createHttpServer(app);
