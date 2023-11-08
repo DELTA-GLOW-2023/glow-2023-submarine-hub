@@ -6,5 +6,9 @@ expressApp.get('/health', (req, res) => {
 });
 
 expressApp.get('/image', async (req, res) => {
-  return res.json(latestImageBase64);
+  if (req.headers.authorization === 'delta-fhict')
+    return res.json(latestImageBase64);
+
+  console.log('Unauthorized request');
+  return res.status(401).json({message: 'Unauthorized'});
 });

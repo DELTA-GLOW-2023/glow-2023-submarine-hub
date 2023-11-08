@@ -9,6 +9,7 @@ socketIoServer.on('connection', socket => {
   socket.on('client-connected', () => {
     console.log('Client is connected');
   });
+
   socket.on('new-image', image => {
     latestImageBase64 = image.image;
   });
