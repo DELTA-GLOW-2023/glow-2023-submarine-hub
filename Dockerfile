@@ -12,7 +12,7 @@ RUN npm install --production
 COPY . .
 
 # Build your application (if necessary)
-# RUN npm run compile
+RUN npm run compile
 
 # Prune dev dependencies
 RUN npm prune --production

@@ -6,7 +6,7 @@ import {config} from 'dotenv';
 
 config();
 
-const PORT = Number(process.env.PORT ?? 90001);
+const PORT = Number(process.env.PORT ?? 9000);
 
 const app = express();
 const httpServer = createHttpServer(app);
