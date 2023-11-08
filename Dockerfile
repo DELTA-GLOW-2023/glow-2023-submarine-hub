@@ -1,11 +1,21 @@
 FROM node:18.17.0-alpine
+# Set the working directory in the container
+WORKDIR /app
 
-RUN npm i
+# Copy just the package.json and package-lock.json files to optimize caching
+COPY package*.json ./
 
+# Install production dependencies
+RUN npm install --production
+
+# Copy the rest of your application code
 COPY . .
 
-RUN npm run compile
+# Build your application (if necessary)
+# RUN npm run compile
 
-RUN npm prune --omit=dev
+# Prune dev dependencies
+RUN npm prune --production
 
-ENTRYPOINT [ "npm", "start" ]
+# Define the command to run when the container starts
+CMD [ "npm", "start" ]
