@@ -2,8 +2,11 @@ import {createServer as createHttpServer} from 'http';
 import {Server as SocketIOServer} from 'socket.io';
 import * as express from 'express';
 import * as cors from 'cors';
+import {config} from 'dotenv';
 
-const PORT = Number(process.env.PORT ?? 8080);
+config();
+
+const PORT = Number(process.env.PORT ?? 90001);
 
 const app = express();
 const httpServer = createHttpServer(app);
@@ -17,16 +20,9 @@ const io = new SocketIOServer(httpServer, {
 app.use(express.json());
 app.use(cors());
 
-httpServer.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
-export const expressApp = app;
-export const socketIoServer = io;
-
 let latestImageBase64: string | undefined;
 
-socketIoServer.on('connection', socket => {
+io.on('connection', socket => {
   console.log('New socket connected');
 
   // Listen for the custom 'client-connected' event from the client
@@ -51,3 +47,13 @@ app.get('/image', async (req, res) => {
     return res.status(401).json({message: 'Unauthorized'});
   }
 });
+
+const startAsync = async () => {
+  httpServer.listen(PORT);
+};
+
+startAsync()
+  .then(() => console.log(`Server is running on port ${PORT}`))
+  .catch(error => {
+    throw error;
+  });
